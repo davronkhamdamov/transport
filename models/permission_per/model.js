@@ -3,9 +3,10 @@ import Staffs from '../staffs/staffs.js';
 
 permisson_modul.sync({ force: false })
 
-const getPermisson = async () => {
-    const data = await permisson_modul.findAll();
-    return data
+const getPermisson = async (header) => {
+    const per = await permisson_modul.findOne({ where: { staff_id: header.id } })
+    if (per.read === true) return await permisson_modul.findAll();
+    else return [per]
 }
 
 const updatePermission = async (
