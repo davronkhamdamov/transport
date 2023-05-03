@@ -4,6 +4,6 @@ export default {
         getPermissons: async (_, args, header) => await getPermisson(header)
     },
     Mutation: {
-        updatePermission: async (_, args) => await updatePermission(args)
+        updatePermission: async (_, args, { id }) => await updatePermission(args, id)
     }
 }
