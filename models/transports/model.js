@@ -1,6 +1,6 @@
 import Transports from './transports.js';
 
-Transports.sync({ force: false })
+Transports.sync({ force: true })
 
 const getTransports = async () => await Transports.findAll()
 

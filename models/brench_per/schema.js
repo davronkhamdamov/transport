@@ -24,6 +24,8 @@ export default `#graphql
             read: Boolean!,
             updatePer: Boolean!,
             delete: Boolean!,
-            create: Boolean!): Message
+            create: Boolean!
+            updatePerModule:Boolean!,
+            readPerModule:Boolean!): Message
     }
 `

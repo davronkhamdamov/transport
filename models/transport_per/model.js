@@ -3,8 +3,10 @@ import Staffs from '../staffs/staffs.js';
 
 Transport_modul.sync({ force: false })
 
-const getPermisson = async () => {
-    return await Transport_modul.findAll()
+const getPermisson = async (params) => {
+    const data = await Transport_modul.findAll()
+    console.log(params);
+    return await Transport_modul.findOne({ where: {} })
 }
 
 const updatePermission = async (

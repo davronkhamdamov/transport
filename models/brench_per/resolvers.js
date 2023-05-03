@@ -4,6 +4,6 @@ export default {
         getBranch_per: async (_, args, { id }) => await getPermisson(id)
     },
     Mutation: {
-        updateBranch_per: async (_, args) => await updatePermission(args)
+        updateBranch_per: async (_, args, { id }) => await updatePermission(args, id)
     }
 }
