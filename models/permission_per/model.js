@@ -4,7 +4,8 @@ import Staffs from '../staffs/staffs.js';
 permisson_modul.sync({ force: false })
 
 const getPermisson = async () => {
-    return await permisson_modul.findAll()
+    const data = await permisson_modul.findAll();
+    return data
 }
 
 const updatePermission = async (
@@ -12,7 +13,7 @@ const updatePermission = async (
     const permission = await Staffs.findOne(
         { where: { id: staff_id } })
     if (!permission) return { message: "Staff not found" }
-    await permission.update({ read, updatePer, delete1, create })
+    await permisson_modul.update({ read, updatePer, delete: delete1, create }, { where: { staff_id: permission.id } })
     return { message: 'Successfully updated' }
 }
 

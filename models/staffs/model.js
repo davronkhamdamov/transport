@@ -3,7 +3,7 @@ import { signjwt, pkg1 } from '../../utils/jwt.js'
 import pkg from 'bcryptjs';
 const { hash, compare } = pkg;
 import Permission_per from '../permission_per/permission_per.js';
-import Branch_per from '../branches/branch.js';
+import Branch_per from '../brench_per/branch_per.js';
 import Transport_per from '../brench_per/branch_per.js';
 
 staff.sync({ force: false })

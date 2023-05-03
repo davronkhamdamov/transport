@@ -1,7 +1,7 @@
 import Transport_modul from './transport.js'
 import Staffs from '../staffs/staffs.js';
 
-Transport_modul.sync({ force: true })
+Transport_modul.sync({ force: false })
 
 const getPermisson = async () => {
     return await Transport_modul.findAll()
@@ -9,10 +9,10 @@ const getPermisson = async () => {
 
 const updatePermission = async (
     { staff_id, read, updatePer, delete: delete1, create }) => {
-    const branch = await Staffs.findOne(
+    const tranport = await Staffs.findOne(
         { where: { id: staff_id } })
-    if (!branch) return { message: "Staff not found" }
-    await branch.update({ read, updatePer, delete: delete1, create })
+    if (!tranport) return { message: "Staff not found" }
+    await Transport_modul.update({ read, updatePer, delete: delete1, create }, { where: { staff_id: tranport.id } })
     return { message: 'Successfully updated' }
 }
 
