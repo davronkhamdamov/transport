@@ -1,5 +1,5 @@
 export default `#graphql
-    type Transport_module{
+    type Transport_per_module{
         id: String
         staff_id: String,
         read: Boolean,
@@ -15,11 +15,11 @@ export default `#graphql
     }
 
     type Query {
-       getPermissons: [ Permisson_module ]
+       getTransport_per: [ Transport_per_module ]
     }
     
     type Mutation{
-        updateTransport(
+        updateTransport_per(
             staff_id:String!,
             read: Boolean!,
             updatePer: Boolean!,
