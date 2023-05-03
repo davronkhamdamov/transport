@@ -2,6 +2,11 @@ import Transports from './transports.js';
 
 Transports.sync({ force: true })
 
+
+async function getPermissionFnc(id) {
+    return await Branch_modul.findOne({ where: { staff_id: id } })
+}
+
 const getTransports = async () => await Transports.findAll()
 
 const getOneTransport = async ({ id }) => {

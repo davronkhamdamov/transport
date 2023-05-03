@@ -8,12 +8,12 @@ import {
 
 export default {
     Query: {
-        transport: async () => getTransports()
+        transport: async (_, args, { id }) => getTransports(id)
     },
     Mutation: {
-        getOneTransport: async (_, args) => getOneTransport(args),
-        createTransport: async (_, args) => createTransport(args),
-        updateTransport: async (_, args) => updateTransport(args),
-        deleteTransport: async (_, args) => deleteTransport(args)
+        getOneTransport: async (_, args, { id }) => getOneTransport(args, id),
+        createTransport: async (_, args, { id }) => createTransport(args, id),
+        updateTransport: async (_, args, { id }) => updateTransport(args, id),
+        deleteTransport: async (_, args, { id }) => deleteTransport(args, id)
     }
 }
