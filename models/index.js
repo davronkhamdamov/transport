@@ -14,7 +14,7 @@ export default makeExecutableSchema({
         TypeTransportModule.typeDefs,
         TypeBranchModule.typeDefs,
         TypeBranchPerModule.typeDefs,
-        TypeTransportModule.typeDefs,
+        TypeTransportPerModule.typeDefs,
     ],
     resolvers: [
         TypeStaffs.resolvers,
