@@ -26,6 +26,14 @@ const Branch_per = sequelize.define('branch_per', {
     delete: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
+    },
+    update_Per: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    read_per: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
 
 })
