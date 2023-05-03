@@ -19,6 +19,11 @@ export default `#graphql
     }
     
     type Mutation{
-        updateTransport(staff_id:String!): Message
+        updateTransport(
+            staff_id:String!,
+            read: Boolean!,
+            updatePer: Boolean!,
+            delete: Boolean!,
+            create: Boolean!): Message
     }
 `
