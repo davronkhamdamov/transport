@@ -1,5 +1,5 @@
-import typeDefs from "./schema"
-import resolvers from "./resolvers"
+import typeDefs from "./schema.js"
+import resolvers from "./resolvers.js"
 
 
 export default {
