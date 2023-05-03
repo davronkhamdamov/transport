@@ -3,7 +3,8 @@ export default `#graphql
         id:String,
         title:String,
         adress:String,
-        createdAt:String
+        createdAt:String,
+        updatedAt:String,
     }
     type Message{
         message:String!

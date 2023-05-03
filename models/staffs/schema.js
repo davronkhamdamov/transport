@@ -5,7 +5,9 @@ export default `#graphql
         password:String,
         birth_date:String,
         gender:String,
-        branch_id:String
+        branch_id:String,
+        createdAt:String,
+        updatedAt:String,
     }
     
     type Message {

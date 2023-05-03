@@ -5,7 +5,9 @@ export default `#graphql
         branch_id:String,
         model:String,
         color:String,
-        img:String
+        img:String,
+        createdAt:String,
+        updatedAt:String,
     }
     type Query{
         transport:[ Transport! ]

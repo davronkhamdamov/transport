@@ -5,7 +5,9 @@ export default `#graphql
         read: Boolean,
         updatePer: Boolean,
         delete: Boolean,
-        create: Boolean
+        create: Boolean,
+        createdAt:String,
+        updatedAt:String,
     }
 
     type Message {
