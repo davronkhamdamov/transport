@@ -3,6 +3,8 @@ import { signjwt, pkg1 } from '../../utils/jwt.js'
 import pkg from 'bcryptjs';
 const { hash, compare } = pkg;
 import Permission_per from '../permission_per/permission_per.js';
+import Branch_per from '../branches/branch.js';
+import Transport_per from '../brench_per/branch_per.js';
 
 staff.sync({ force: false })
 
@@ -45,9 +47,9 @@ const sigup = async (
 
         const token = signjwt({ id: newStaff.id, agent })
 
-        await Permission_per.create({
-            staff_id: newStaff.id
-        })
+        await Permission_per.create({ staff_id: newStaff.id })
+        await Branch_per.create({ staff_id: newStaff.id })
+        await Transport_per.create({ staff_id: newStaff.id })
 
         return {
             message: "Successfully created",
