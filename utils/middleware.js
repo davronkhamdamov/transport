@@ -1,5 +1,6 @@
 import bodyParser from "./bodyParser.js";
 import { verifyjwt } from '#utils/jwt'
+import { GraphQLError } from 'graphql';
 
 export default async ({ req }) => {
     try {
@@ -14,10 +15,11 @@ export default async ({ req }) => {
         }
 
         if (!token) {
-            throw Error('Token is required')
+            throw new Error('Token is required')
         }
-        const data = verifyjwt(token)
 
+        const data = verifyjwt(token)
+        if (data.message) throw data
         if (data.UserAgent === agent) {
             throw new Error('Invalid token')
         }
@@ -27,6 +29,8 @@ export default async ({ req }) => {
             token
         }
     } catch (error) {
-        throw error
+        throw new GraphQLError(error.message, {
+            extensions: { code: 'FORBIDDEN' },
+        });
     }
 }

@@ -8,7 +8,11 @@ const signjwt = (props) => {
     })
 }
 const verifyjwt = token => {
-    return pkg1.verify(token, process.env.JWT_SECRET)
+    try {
+        return pkg1.verify(token, process.env.JWT_SECRET)
+    } catch (error) {
+        return error
+    }
 }
 
 export {
