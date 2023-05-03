@@ -15,7 +15,7 @@ const Transport_per = sequelize.define('transport_per', {
         type: DataTypes.BOOLEAN,
         defaultValue: false
     },
-    update: {
+    updatePer: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
     },
