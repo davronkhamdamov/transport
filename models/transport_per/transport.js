@@ -1,4 +1,4 @@
-import { DataTypes, sequelize, UUIDV4 } from "../../config/config"
+import { DataTypes, sequelize, UUIDV4 } from "../../config/config.js"
 
 const Transport_per = sequelize.define('transport_per', {
     id: {
