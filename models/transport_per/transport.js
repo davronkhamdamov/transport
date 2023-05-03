@@ -26,6 +26,14 @@ const Transport_per = sequelize.define('transport_per', {
     delete: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
+    },
+    updatePerModule: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
+    },
+    readPerModule: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
 })
 export default Transport_per
