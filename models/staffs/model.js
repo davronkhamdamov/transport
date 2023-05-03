@@ -65,6 +65,9 @@ const deleteStaff = async (header) => {
         const FoundStaff = await staff.findOne({ where: { id: header.id } })
         if (!FoundStaff) throw new Error("Invalid token")
         await Permission_per.destroy({ where: { staff_id: FoundStaff.id } })
+        await Branch_per.destroy({ where: { staff_id: FoundStaff.id } })
+        await Transport_per.destroy({ where: { staff_id: FoundStaff.id } })
+
         await FoundStaff.destroy()
         pkg1.decode(header.token)
         return { message: "Successfully deleted" }

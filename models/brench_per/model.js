@@ -11,11 +11,11 @@ const getPermisson = async (id) => {
     try {
         const per = await getPermissionFnc(id)
         if (!per.readPerModule) {
-            throw new Error("You can't get branch permission")
+            throw "You can't get branch permission"
         }
         return await Branch_modul.findAll()
     } catch (error) {
-        return error
+        throw new Error(error)
     }
 }
 
@@ -29,15 +29,20 @@ const updatePermission = async (
         updatePerModule,
         readPerModule
     }, id) => {
-    const per = await getPermissionFnc(id)
-    if (!per.updatePerModule) {
-        throw new Error("You can't update branch permission")
+
+    try {
+        const per = await getPermissionFnc(id)
+        if (!per.updatePerModule) {
+            throw "You can't update branch permission"
+        }
+        const branch = await Staffs.findOne(
+            { where: { id: staff_id } })
+        if (!branch) return { message: "Staff not found" }
+        await Branch_modul.update({ read, updatePer, delete: delete1, create, readPerModule, updatePerModule }, { where: { staff_id } })
+        return { message: 'Successfully updated' }
+    } catch (error) {
+        throw new Error(error)
     }
-    const branch = await Staffs.findOne(
-        { where: { id: staff_id } })
-    if (!branch) return { message: "Staff not found" }
-    await Branch_modul.update({ read, updatePer, delete: delete1, create, readPerModule, updatePerModule }, { where: { staff_id } })
-    return { message: 'Successfully updated' }
 }
 
 export { getPermisson, updatePermission }

@@ -1,11 +1,11 @@
 import { createBranch, deleteBranch, getBranches, updateBranch } from './model.js'
 export default {
     Query: {
-        getBranches: async () => await getBranches(),
+        getBranches: async (_, args, { id }) => await getBranches(id),
     },
     Mutation: {
-        createBranch: async (_, args, header) => createBranch(args, header),
-        updateBranch: async (_, args, header) => updateBranch(args, header),
-        deleteBranch: async (_, args, header) => deleteBranch(args, header),
+        createBranch: async (_, args, { id }) => createBranch(args, id),
+        updateBranch: async (_, args, { id }) => updateBranch(args, id),
+        deleteBranch: async (_, args, { id }) => deleteBranch(args, id),
     }
 }
