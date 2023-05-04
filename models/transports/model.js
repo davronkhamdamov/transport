@@ -1,5 +1,6 @@
 import Transports from './transports.js';
 import Transport_module from '../transport_per/transport.js';
+import Branch from '../branches/branch.js';
 Transports.sync({ force: false })
 
 
@@ -25,6 +26,8 @@ const createTransport = async (params, id) => {
         if (!per.create) {
             throw "You can't create transport"
         }
+        const branch = await Branch.findOne({ where: { id: params.branch_id } })
+        if (!branch) return { message: "Branch not found" }
         await Transports.create(params)
         return { message: "Transport successfully added" }
     } catch (error) {
@@ -59,6 +62,10 @@ const updateTransport = async (params, id) => {
         if (!per.updatePer) {
             throw "You can't update transport"
         }
+
+        const branch = await Branch.findOne({ where: { id: params.branch_id } })
+        if (!branch) return { message: "Branch not found" }
+
         const transport = await Transports.findOne({ where: { id: params.id } })
         if (!transport) return { message: "Transport not found" }
         console.log(params);
