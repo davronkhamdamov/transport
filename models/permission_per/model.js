@@ -15,14 +15,20 @@ const getPermisson = async (header) => {
 
 const updatePermission = async (
     { staff_id, read, updatePer, delete: delete1, create }, id) => {
-    const per = await getPermissionFnc(id)
-    if (per.update) return { message: "You can't update" }
-
-    const permission = await Staffs.findOne(
-        { where: { id: staff_id } })
-    if (!permission) return { message: "Staff not found" }
-    await permisson_modul.update({ read, updatePer, delete: delete1, create }, { where: { staff_id: permission.id } })
-    return { message: 'Successfully updated' }
+    try {
+        const per = await getPermissionFnc(id)
+        if (!per.updatePer) throw "You can't update branch permission"
+        const permission = await Staffs.findOne(
+            { where: { id: staff_id } })
+        if (!permission) return { message: "Staff not found" }
+        await permisson_modul.update({ read, updatePer, delete: delete1, create }, { where: { staff_id: permission.id } })
+        return { message: 'Successfully updated' }
+    } catch (error) {
+        if (error.message) {
+            return { message: error.message }
+        }
+        throw new Error(error)
+    }
 }
 
 export { getPermisson, updatePermission }

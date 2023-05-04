@@ -1,12 +1,7 @@
 import { Sequelize, DataTypes, UUIDV4 } from "sequelize"
 import dotenv from 'dotenv'
 dotenv.config()
-const sequelize = new Sequelize(process.env.ELEPHANTSQLURL,
-    {
-        host: 'localhost',
-        dialect: 'postgres',
-        logging: false
-    })
+const sequelize = new Sequelize(process.env.ELEPHANTSQLURL, { logging: false })
 
 sequelize
     .authenticate()

@@ -3,11 +3,9 @@ export default `#graphql
         id: String
         staff_id: String,
         read: Boolean,
-        updatePer: Boolean,
-        delete: Boolean,
-        create: Boolean,
+        updatePer: Boolean
         createdAt:String,
-        updatedAt:String,
+        updatedAt:String
     }
 
     type Message {
@@ -22,8 +20,7 @@ export default `#graphql
         updatePermission(
             staff_id:String!,
             read: Boolean!,
-            updatePer: Boolean!,
-            delete: Boolean!,
-            create: Boolean!): Message
+            updatePer: Boolean!
+            ): Message
     }
 `

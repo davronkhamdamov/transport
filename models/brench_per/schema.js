@@ -8,6 +8,8 @@ export default `#graphql
         create: Boolean,
         createdAt:String,
         updatedAt:String,
+        updatePerModule:Boolean,
+        readPerModule:Boolean
     }
 
     type Message {
