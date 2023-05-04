@@ -8,7 +8,7 @@ import {
 
 export default {
     Query: {
-        transport: async (_, args, { id }) => getTransports(id)
+        getTransport: async (_, args, { id }) => getTransports(id)
     },
     Mutation: {
         getOneTransport: async (_, args, { id }) => getOneTransport(args, id),

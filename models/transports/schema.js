@@ -10,7 +10,7 @@ export default `#graphql
         updatedAt:String,
     }
     type Query{
-        transport:[ Transport! ]
+        getTransport:[ Transport! ]
     }
     type Message{
         message:String!,
