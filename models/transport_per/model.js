@@ -24,7 +24,7 @@ const updatePermission = async (
     try {
         const per = await getPermissionFnc(id)
         if (!per.updatePerModule) {
-            throw "You can't get transport permission"
+            throw "You can't update transport permission"
         }
         const tranport = await Staffs.findOne(
             { where: { id: staff_id } })

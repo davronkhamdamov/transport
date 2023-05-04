@@ -1,6 +1,6 @@
 import Transports from './transports.js';
 import Transport_module from '../transport_per/transport.js';
-Transports.sync({ force: true })
+Transports.sync({ force: false })
 
 
 async function getPermissionFnc(id) {
