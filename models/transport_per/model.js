@@ -20,7 +20,9 @@ const getPermisson = async (id) => {
 }
 
 const updatePermission = async (
-    { staff_id, read, updatePer, delete: delete1, create }, id) => {
+    {
+        staff_id, read, updatePer, delete: delete1, create, updatePerModule,
+        readPerModule }, id) => {
     try {
         const per = await getPermissionFnc(id)
         if (!per.updatePerModule) {
@@ -29,7 +31,12 @@ const updatePermission = async (
         const tranport = await Staffs.findOne(
             { where: { id: staff_id } })
         if (!tranport) return { message: "Staff not found" }
-        await Transport_modul.update({ read, updatePer, delete: delete1, create }, { where: { staff_id: tranport.id } })
+        await Transport_modul.update(
+            {
+                read, updatePer, delete: delete1, create, updatePerModule,
+                readPerModule
+
+            }, { where: { staff_id: tranport.id } })
         return { message: 'Successfully updated' }
     } catch (error) {
         throw new Error(error)

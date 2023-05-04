@@ -21,14 +21,17 @@ const getOneTransport = async ({ id }, staff_id) => {
 
 const createTransport = async (params, id) => {
     try {
-        const per = await getPermissionFnc(staff_id)
+        const per = await getPermissionFnc(id)
         if (!per.create) {
             throw "You can't create transport"
         }
         await Transports.create(params)
         return { message: "Transport successfully added" }
     } catch (error) {
-        return { message: error.message }
+        if (error.message) {
+            return { message: error.message }
+        }
+        throw new Error(error)
     }
 }
 const deleteTransport = async ({ id }, staff_id) => {
